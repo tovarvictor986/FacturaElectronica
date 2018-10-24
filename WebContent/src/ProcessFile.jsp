@@ -1,12 +1,15 @@
+<%@page import="com.model.Constants"%>
 <%@ page import="com.model.FileCSV"%>
 <%@ page import="com.model.CreateXML"%>
+<%@ page import="com.model.Constants.*"%>
 <%@ page import="java.io.*"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Iterator"%>
 <%@ page import="java.io.File"%>
+
 <%
 	String file = request.getParameter("dataFile");
-	String filePathOnServer = application.getRealPath("dataFile");
+	String filePathOnServer = application.getRealPath("dataFile");	
 	//out.println("file> "+file);
 	//out.println("<br />");
 	//out.println("filePathOnServer "+filePathOnServer);
@@ -28,9 +31,13 @@
 			if(str.isEmpty()||str.trim().equals("")){
 				str = "";				
 			}
+			//SE AGREGAN LAS PARTES CONSTANTES DEL XML
+			//fileCSV.setStsInvoiceAuthorization(Constants.stsInvoiceAuthorization);
+			//
 			switch (j) {
 	            case 1:  
-	            	fileCSV.setStsInvoiceAuthorization(str);//OK
+	            	//fileCSV.setStsInvoiceAuthorization(str);//OK
+	            	fileCSV.setStsInvoiceAuthorization(Constants.STS_INVOICE_AUTHOTIZATION);
                     break;
 	            case 2:  
 	            	fileCSV.setStsFrom(str);//OK                   
@@ -150,7 +157,6 @@
 	            	fileCSV.setValorIva(str);//OK
 	                break;
 	            case 41:
-	            	System.out.println("COLUMNA 41 "+str);
 	            	fileCSV.setNitGfi(str);//OK
 	                break;
 	            case 42: 

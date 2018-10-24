@@ -1,9 +1,6 @@
 package com.model;
 
 import java.io.File;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -15,11 +12,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import org.w3c.dom.Attr;
+
+//import com.sun.java.util.jar.pack.Package.Class.Field;
 /**
  *
  * @author skargopolov
  */
-public class CreateXML {		
+public class CreateXML {	
     
 	public CreateXML() {
 		//super();
@@ -475,20 +474,22 @@ public class CreateXML {
             Element dsDigestValue5 = doc.createElement("ds:DigestMethod");
             xadesCertDigest2.appendChild(dsDigestValue5);
             //dsDigestValue5.setTextContent("ydBrkDUi4OLwpDJACttO8PSuHdE=");            
-            dsDigestValue5.setTextContent("ydBrkDUi4OLwpDJACttO8PSuHdE=");
+            dsDigestValue5.setTextContent(fileXML.getDsDigestValue());
             
             Element xadesIssuerSerial2 = doc.createElement("xades:IssuerSerial");
             xadesCert2.appendChild(xadesIssuerSerial2);            
             
             Element dsX509IssuerName2 = doc.createElement("ds:X509IssuerName");
             xadesIssuerSerial2.appendChild(dsX509IssuerName2);
-            dsX509IssuerName2.setTextContent("\nC=CO,L=Bogota D.C.,O=Andes"+
+            /*dsX509IssuerName2.setTextContent("\nC=CO,L=Bogota D.C.,O=Andes"+
 						            		"\nSCD,OU=Division de certificacion,CN=ROOT CA ANDES SCD"+
-						            		"\nS.A.,1.2.840.113549.1.9.1=#1614696e666f40616e6465737363642e636f6d2e636f");  
+						            		"\nS.A.,1.2.840.113549.1.9.1=#1614696e666f40616e6465737363642e636f6d2e636f");  */
+            dsX509IssuerName2.setTextContent(fileXML.getDsX509IssuerName());
             
             Element dsX509SerialNumber2 = doc.createElement("ds:X509SerialNumber");
             xadesIssuerSerial2.appendChild(dsX509SerialNumber2);
-            dsX509SerialNumber2.setTextContent("8136867327090815624\n");
+            //dsX509SerialNumber2.setTextContent("8136867327090815624\n");
+            dsX509SerialNumber2.setTextContent(fileXML.getDsX509SerialNumber());
             
             
             //*******333
@@ -507,20 +508,23 @@ public class CreateXML {
             
             Element dsDigestValue6 = doc.createElement("ds:DigestMethod");
             xadesCertDigest3.appendChild(dsDigestValue6);
-            dsDigestValue6.setTextContent("OXeITae4OgBq7RWNUGqshhvKGk8=");            
+            //dsDigestValue6.setTextContent("OXeITae4OgBq7RWNUGqshhvKGk8=");            
+            dsDigestValue6.setTextContent(fileXML.getDsDigestValue());
             
             Element xadesIssuerSerial3 = doc.createElement("xades:IssuerSerial");
             xadesCert3.appendChild(xadesIssuerSerial3);            
             
             Element dsX509IssuerName3 = doc.createElement("ds:X509IssuerName");
             xadesIssuerSerial3.appendChild(dsX509IssuerName3);
-            dsX509IssuerName3.setTextContent("C=CO,L=Bogota D.C.,O=Andes"+
+            /*dsX509IssuerName3.setTextContent("C=CO,L=Bogota D.C.,O=Andes"+
 						            		"\nSCD,OU=Division de certificacion,CN=ROOT CA ANDES SCD"+
-						            		"\nS.A.,1.2.840.113549.1.9.1=#1614696e666f40616e6465737363642e636f6d2e636f");  
+						            		"\nS.A.,1.2.840.113549.1.9.1=#1614696e666f40616e6465737363642e636f6d2e636f");  */
+            dsX509IssuerName3.setTextContent(fileXML.getDsX509IssuerName());
             
             Element dsX509SerialNumber3 = doc.createElement("ds:X509SerialNumber");
             xadesIssuerSerial3.appendChild(dsX509SerialNumber3);
-            dsX509SerialNumber3.setTextContent("3184328748892787122\n");             
+            //dsX509SerialNumber3.setTextContent("3184328748892787122\n");             
+            dsX509SerialNumber3.setTextContent(fileXML.getDsX509SerialNumber());
             
             //******
             
@@ -535,7 +539,8 @@ public class CreateXML {
             
             Element xadesIdentifier = doc.createElement("xades:Identifier");
             xadesSigPolicyId.appendChild(xadesIdentifier); 
-            xadesIdentifier.setTextContent("http://facturaelectronica.dian.gov.co/politicadefirma/v1/politicadefirmav1.pdf"); 
+            //xadesIdentifier.setTextContent("http://facturaelectronica.dian.gov.co/politicadefirma/v1/politicadefirmav1.pdf"); 
+            xadesIdentifier.setTextContent(fileXML.getXadesIdentifier());
             
             Element xadesSigPolicyHash = doc.createElement("xades:SigPolicyHash");
             xadesSigPolicyId.appendChild(xadesSigPolicyHash); 
@@ -550,7 +555,8 @@ public class CreateXML {
             
             Element dsDigestValue8 = doc.createElement("ds:DigestValue");
             xadesSigPolicyHash.appendChild(dsDigestValue8);
-            dsDigestValue8.setTextContent("2jmj7l5rSw0yVb/vlWAYkK/YBwk=");            
+            //dsDigestValue8.setTextContent("2jmj7l5rSw0yVb/vlWAYkK/YBwk=");            
+            dsDigestValue8.setTextContent(fileXML.getDsDigestValue());
             
             Element xadesSignerRole = doc.createElement("xades:SignerRole");
             xadesSignedSignatureProperties.appendChild(xadesSignerRole);            
@@ -560,23 +566,28 @@ public class CreateXML {
             
             Element xadesClaimedRole = doc.createElement("xades:ClaimedRole");
             xadesClaimedRoles.appendChild(xadesClaimedRole);
-            xadesClaimedRole.setTextContent("supplier");             
+            //xadesClaimedRole.setTextContent("supplier");             
+            xadesClaimedRole.setTextContent(fileXML.getXadesClaimedRole());
             
             Element cbcUBLVersionID = doc.createElement("cbc:UBLVersionID");
             feInvoice.appendChild(cbcUBLVersionID);
-            cbcUBLVersionID.setTextContent("UBL 2.0"); 
+            //cbcUBLVersionID.setTextContent("UBL 2.0"); 
+            cbcUBLVersionID.setTextContent(fileXML.getCbcUBLVersionID());
             
             Element cbcProfileID = doc.createElement("cbc:ProfileID");
             feInvoice.appendChild(cbcProfileID);
-            cbcProfileID.setTextContent("DIAN 1.0");
+            //cbcProfileID.setTextContent("DIAN 1.0");
+            cbcProfileID.setTextContent(fileXML.getCbcProfileID());
             
             Element cbcID = doc.createElement("cbc:ID");
             feInvoice.appendChild(cbcID);
-            cbcID.setTextContent("PRUE980391949");
+            //cbcID.setTextContent("PRUE980391949");
+            cbcID.setTextContent(fileXML.getCbcID());
             
             Element cbcUUID = doc.createElement("cbc:UUID");
             feInvoice.appendChild(cbcUUID);
-            cbcUUID.setTextContent("15ee05242602f5ddbdb785c3ddfe87eff4b037f1");
+            //cbcUUID.setTextContent("15ee05242602f5ddbdb785c3ddfe87eff4b037f1");
+            cbcUUID.setTextContent(fileXML.getCbcUUID());
             
             Attr schemeAgencyID4 = doc.createAttribute("schemeAgencyID");
             schemeAgencyID4.setValue("195");
@@ -588,11 +599,13 @@ public class CreateXML {
             
             Element cbcIssueDate = doc.createElement("cbc:IssueDate");
             feInvoice.appendChild(cbcIssueDate);
-            cbcIssueDate.setTextContent("2016-11-28");
+            //cbcIssueDate.setTextContent("2016-11-28");
+            cbcIssueDate.setTextContent(fileXML.getCbcIssueDate());
             
             Element cbcIssueTime = doc.createElement("cbc:IssueTime");
             feInvoice.appendChild(cbcIssueTime);
-            cbcIssueTime.setTextContent("06:11:31");
+            //cbcIssueTime.setTextContent("06:11:31");
+            cbcIssueTime.setTextContent(fileXML.getCbcIssueTime());
             
             Element cbcInvoiceTypeCode = doc.createElement("cbc:InvoiceTypeCode");
             feInvoice.appendChild(cbcInvoiceTypeCode);
@@ -608,11 +621,12 @@ public class CreateXML {
             Attr listSchemeURI2 = doc.createAttribute("listSchemeURI");
             listSchemeURI2.setValue("http://www.dian.gov.co/contratos/facturaelectronica/v1/InvoiceType");
             cbcInvoiceTypeCode.setAttributeNode(listSchemeURI2);
-            cbcInvoiceTypeCode.setTextContent("1");
+            //cbcInvoiceTypeCode.setTextContent("1");
+            cbcInvoiceTypeCode.setTextContent(fileXML.getCbcInvoiceTypeCode());
             
             Element cbcNote = doc.createElement("cbc:Note");
             feInvoice.appendChild(cbcNote);
-            cbcInvoiceTypeCode.setTextContent("\nSet de pruebas ="+
+            /*cbcInvoiceTypeCode.setTextContent("\nSet de pruebas ="+
 							            		"\nf-s0001_900373123_bc4f2_R9000000500018095-PRUE-A_cufePRUE980391949_4Z_900373123"+
 							            		"\n2016-11-28 politica de firma DIAN&#13;"+
 							            		"\nNumFac: PRUE980391949&#13;"+
@@ -632,12 +646,14 @@ public class CreateXML {
 									            "\nNumAdq: 800199436&#13;"+
 									            "\nString:"+
 												"\nPRUE980391949201611280611311845839.84010.000276417.7603178308.122157528.3190037312331800199436dd85db55545bd6566f36b0fd3be9fd8555c36e&#13;");
-            
+            */
+            cbcInvoiceTypeCode.setTextContent(fileXML.getCbcNote());
             
             
             Element cbcDocumentCurrencyCode = doc.createElement("cbc:DocumentCurrencyCode");
             feInvoice.appendChild(cbcDocumentCurrencyCode);
-            cbcDocumentCurrencyCode.setTextContent("\nCOP\n");
+            //cbcDocumentCurrencyCode.setTextContent("\nCOP\n");
+            cbcDocumentCurrencyCode.setTextContent(fileXML.getCbcDocumentCurrencyCode());
             
             
             Element feAccountingSupplierParty = doc.createElement("fe:AccountingSupplierParty");
@@ -645,7 +661,8 @@ public class CreateXML {
             
             Element cbcAdditionalAccountID = doc.createElement("cbc:AdditionalAccountID");
             feAccountingSupplierParty.appendChild(cbcAdditionalAccountID);
-            cbcAdditionalAccountID.setTextContent("\n1\n");            
+            //cbcAdditionalAccountID.setTextContent("\n1\n");            
+            cbcAdditionalAccountID.setTextContent(fileXML.getCbcAdditionalAccountID());
             
             Element feParty = doc.createElement("fe:Party");
             feAccountingSupplierParty.appendChild(feParty);
@@ -655,7 +672,8 @@ public class CreateXML {
             
             Element cbcID2 = doc.createElement("cbc:ID");
             cacPartyIdentification.appendChild(cbcID2);
-            cbcID2.setTextContent("900373123\n"); 
+            //cbcID2.setTextContent("900373123\n"); 
+            cbcID2.setTextContent(fileXML.getCbcID());
                        
             Attr chemeAgencyID = doc.createAttribute("chemeAgencyID");
             chemeAgencyID.setValue("195");
@@ -674,7 +692,8 @@ public class CreateXML {
             
             Element cbcName = doc.createElement("cbc:Name");
             cacPartyName.appendChild(cbcName);
-            cbcName.setTextContent("\nPJ - 900373123 - Adquiriente FE\n"); 
+            //cbcName.setTextContent("\nPJ - 900373123 - Adquiriente FE\n"); 
+            cbcName.setTextContent(fileXML.getCbcName());
             
             Element fePhysicalLocation = doc.createElement("fe:PhysicalLocation");
             feParty.appendChild(fePhysicalLocation); 
@@ -684,36 +703,42 @@ public class CreateXML {
             
             Element cbcDepartment = doc.createElement("cbc:Department");
             fePhysicalLocation.appendChild(cbcDepartment);
-            cbcDepartment.setTextContent("\nDistrito Capital\n"); 
+            //cbcDepartment.setTextContent("\nDistrito Capital\n"); 
+            cbcDepartment.setTextContent(fileXML.getCbcDepartment());
             
             Element cbcCitySubdivisionName = doc.createElement("cbc:CitySubdivisionName");
             fePhysicalLocation.appendChild(cbcCitySubdivisionName);
-            cbcCitySubdivisionName.setTextContent("\nCentro\n"); 
+            //cbcCitySubdivisionName.setTextContent("\nCentro\n"); 
+            cbcCitySubdivisionName.setTextContent(fileXML.getCbcCitySubdivisionName());
             
             Element cbcCityName = doc.createElement("cbc:CityName");
             fePhysicalLocation.appendChild(cbcCityName);
-            cbcCityName.setTextContent("\nBogotá\n"); 
+            //cbcCityName.setTextContent("\nBogotá\n"); 
+            cbcCityName.setTextContent(fileXML.getCbcCityName());
             
             Element cacAddressLine = doc.createElement("cac:AddressLine");
             fePhysicalLocation.appendChild(cacAddressLine);
             
             Element cbcLine = doc.createElement("cbc:Line");
             cacAddressLine.appendChild(cbcLine);
-            cbcLine.setTextContent("\ncarrera 8 Nº 6C - 78\n"); 
+            //cbcLine.setTextContent("\ncarrera 8 Nº 6C - 78\n"); 
+            cbcLine.setTextContent(fileXML.getCbcLine());
             
             Element cacCountry = doc.createElement("cac:Country");
             fePhysicalLocation.appendChild(cacCountry);
             
             Element cbcIdentificationCode2 = doc.createElement("cbc:IdentificationCode");
             cacCountry.appendChild(cbcIdentificationCode2);
-            cbcIdentificationCode2.setTextContent("\nCO\n"); 
+            //cbcIdentificationCode2.setTextContent("\nCO\n"); 
+            cbcIdentificationCode2.setTextContent(fileXML.getCbcIdentificationCode());
             
             Element fePartyTaxScheme = doc.createElement("fe:PartyTaxScheme");
             feParty.appendChild(fePartyTaxScheme);
             
             Element cbcTaxLevelCode = doc.createElement("cbc:TaxLevelCode");
             fePartyTaxScheme.appendChild(cbcTaxLevelCode);
-            cbcTaxLevelCode.setTextContent("\n0\n"); 
+            //cbcTaxLevelCode.setTextContent("\n0\n"); 
+            cbcTaxLevelCode.setTextContent(fileXML.getCbcTaxLevelCode());
             
             Element cacTaxScheme = doc.createElement("cac:TaxScheme");
             fePartyTaxScheme.appendChild(cacTaxScheme);
@@ -723,7 +748,8 @@ public class CreateXML {
             
             Element cbcRegistrationName = doc.createElement("cbc:RegistrationName");
             fePartyLegalEntity.appendChild(cbcRegistrationName);
-            cbcRegistrationName.setTextContent("\nPJ - 900373123\n");
+            //cbcRegistrationName.setTextContent("\nPJ - 900373123\n");
+            cbcRegistrationName.setTextContent(fileXML.getCbcRegistrationName());
             
             //*********            
             Element feAccountingCustomerParty = doc.createElement("fe:AccountingCustomerParty");
@@ -731,7 +757,8 @@ public class CreateXML {
             
             Element cbcAdditionalAccountID2 = doc.createElement("cbc:AdditionalAccountID");
             feAccountingCustomerParty.appendChild(cbcAdditionalAccountID2);
-            cbcAdditionalAccountID2.setTextContent("\n1\n");            
+            //cbcAdditionalAccountID2.setTextContent("\n1\n");            
+            cbcAdditionalAccountID2.setTextContent(fileXML.getCbcAdditionalAccountID());
             
             Element feParty2 = doc.createElement("fe:Party");
             feAccountingCustomerParty.appendChild(feParty2);
@@ -741,7 +768,8 @@ public class CreateXML {
             
             Element cbcID3 = doc.createElement("cbc:ID");
             cacPartyIdentification2.appendChild(cbcID3);
-            cbcID3.setTextContent("800199436\n");
+            //cbcID3.setTextContent("800199436\n");
+            cbcID3.setTextContent(fileXML.getCbcID());
             
             Attr schemeAgencyID5 = doc.createAttribute("schemeAgencyID");
             schemeAgencyID5.setValue("195");
@@ -760,7 +788,8 @@ public class CreateXML {
             
             Element cbcName2 = doc.createElement("cbc:Name");
             cacPartyName2.appendChild(cbcName2);
-            cbcName2.setTextContent("\nPJ - 800199436 - Adquiriente FE\n");
+            //cbcName2.setTextContent("\nPJ - 800199436 - Adquiriente FE\n");
+            cbcName2.setTextContent(fileXML.getCbcName());
             
             Element fePhysicalLocation2 = doc.createElement("fe:PhysicalLocation");
             feParty2.appendChild(fePhysicalLocation2);
@@ -770,36 +799,42 @@ public class CreateXML {
             
             Element cbcDepartment2 = doc.createElement("cbc:Department");
             feAddress2.appendChild(cbcDepartment2);
-            cbcDepartment2.setTextContent("\nHuila\n");
+            //cbcDepartment2.setTextContent("\nHuila\n");
+            cbcDepartment2.setTextContent(fileXML.getCbcDepartment());
             
             Element cbcCitySubdivisionName2 = doc.createElement("cbc:CitySubdivisionName");
             feAddress2.appendChild(cbcCitySubdivisionName2);
-            cbcCitySubdivisionName2.setTextContent("\nCentro\n");
+            //cbcCitySubdivisionName2.setTextContent("\nCentro\n");
+            cbcCitySubdivisionName2.setTextContent(fileXML.getCbcCitySubdivisionName());
             
             Element cbcCityName2 = doc.createElement("cbc:CityName");
             feAddress2.appendChild(cbcCityName2);
-            cbcCityName2.setTextContent("\nAipe\n");
+            //cbcCityName2.setTextContent("\nAipe\n");
+            cbcCityName2.setTextContent(fileXML.getCbcCityName());
             
             Element cacAddressLine2 = doc.createElement("cac:AddressLine");
             feAddress2.appendChild(cacAddressLine2);
             
             Element cbcLine2 = doc.createElement("cbc:Line");
             cacAddressLine2.appendChild(cbcLine2);            
-            cbcLine2.setTextContent("\ncarrera 8 Nº 6C - 101\n");            
+            //cbcLine2.setTextContent("\ncarrera 8 Nº 6C - 101\n");            
+            cbcLine2.setTextContent(fileXML.getCbcLine());
             
             Element cacCountry2 = doc.createElement("cac:Country");
             feAddress2.appendChild(cacCountry2);
             
             Element cbcIdentificationCode3 = doc.createElement("cbc:IdentificationCode");
             cacCountry2.appendChild(cbcIdentificationCode3);            
-            cbcIdentificationCode3.setTextContent("\nCO\n");
+            //cbcIdentificationCode3.setTextContent("\nCO\n");
+            cbcIdentificationCode3.setTextContent(fileXML.getCbcIdentificationCode());
             
             Element fePartyTaxScheme2 = doc.createElement("fe:PartyTaxScheme");
             feParty2.appendChild(fePartyTaxScheme2);
             
             Element cbcTaxLevelCode2 = doc.createElement("cbc:TaxLevelCode");
             fePartyTaxScheme2.appendChild(cbcTaxLevelCode2);            
-            cbcTaxLevelCode2.setTextContent("\n0\n");
+            //cbcTaxLevelCode2.setTextContent("\n0\n");
+            cbcTaxLevelCode2.setTextContent(fileXML.getCbcTaxLevelCode());
             
             Element cacTaxScheme2 = doc.createElement("cac:TaxScheme");
             fePartyTaxScheme2.appendChild(cacTaxScheme2); 
@@ -809,14 +844,16 @@ public class CreateXML {
             
             Element cbcRegistrationName2 = doc.createElement("cbc:RegistrationName");
             fePartyLegalEntity2.appendChild(cbcRegistrationName2);            
-            cbcRegistrationName2.setTextContent("\nPJ - 800199436\n");
+            //cbcRegistrationName2.setTextContent("\nPJ - 800199436\n");
+            cbcRegistrationName2.setTextContent(fileXML.getCbcRegistrationName());
             
             Element feTaxTotal = doc.createElement("fe:TaxTotal");
             feInvoice.appendChild(feTaxTotal);
             
             Element cbcTaxAmount = doc.createElement("cbc:TaxAmount");
             feTaxTotal.appendChild(cbcTaxAmount);
-            cbcTaxAmount.setTextContent("\n178308.12\n");
+            //cbcTaxAmount.setTextContent("\n178308.12\n");
+            cbcTaxAmount.setTextContent(fileXML.getCbcTaxableAmount());
             
             Attr currencyID = doc.createAttribute("currencyID");
             currencyID.setValue("COP");
@@ -824,14 +861,16 @@ public class CreateXML {
             
             Element cbcTaxEvidenceIndicator = doc.createElement("cbc:TaxEvidenceIndicator");
             feTaxTotal.appendChild(cbcTaxEvidenceIndicator);
-            cbcTaxEvidenceIndicator.setTextContent("\nfalse\n");
+            //cbcTaxEvidenceIndicator.setTextContent("\nfalse\n");
+            cbcTaxEvidenceIndicator.setTextContent(fileXML.getCbcTaxEvidenceIndicator());
             
             Element feTaxSubtotal = doc.createElement("fe:TaxSubtotal");
             feTaxTotal.appendChild(feTaxSubtotal);
 
             Element cbcTaxableAmount = doc.createElement("cbc:TaxableAmount");
             feTaxSubtotal.appendChild(cbcTaxableAmount);
-            cbcTaxableAmount.setTextContent("1845839.84\n");
+            //cbcTaxableAmount.setTextContent("1845839.84\n");
+            cbcTaxableAmount.setTextContent(fileXML.getCbcTaxableAmount2());
             
             Attr currencyID2 = doc.createAttribute("currencyID");
             currencyID.setValue("COP");
@@ -839,7 +878,8 @@ public class CreateXML {
             
             Element cbcTaxAmount2 = doc.createElement("cbc:TaxAmount");
             feTaxSubtotal.appendChild(cbcTaxAmount2);
-            cbcTaxAmount2.setTextContent("178308.12\n");
+            //cbcTaxAmount2.setTextContent("178308.12\n");
+            cbcTaxAmount2.setTextContent(fileXML.getCbcTaxableAmount2());
             
             Attr currencyID3 = doc.createAttribute("currencyID");
             currencyID3.setValue("COP");
@@ -847,7 +887,8 @@ public class CreateXML {
             
             Element cbcPercent = doc.createElement("cbc:Percent");
             feTaxSubtotal.appendChild(cbcPercent);
-            cbcPercent.setTextContent("\n9.66\n");
+            //cbcPercent.setTextContent("\n9.66\n");
+            cbcPercent.setTextContent(fileXML.getCbcPercent());
             
             Element cacTaxCategory = doc.createElement("cac:TaxCategory");
             feTaxSubtotal.appendChild(cacTaxCategory);
@@ -857,7 +898,8 @@ public class CreateXML {
             
             Element cbcID4 = doc.createElement("cbc:ID");
             cacTaxScheme3.appendChild(cbcID4);
-            cbcID4.setTextContent("03\n");
+            //cbcID4.setTextContent("03\n");
+            cbcID4.setTextContent(fileXML.getCbcID());
             
             //******************
             
@@ -866,7 +908,8 @@ public class CreateXML {
             
             Element cbcTaxAmount3 = doc.createElement("cbc:TaxAmount");
             feTaxTotal2.appendChild(cbcTaxAmount3);
-            cbcTaxAmount3.setTextContent("\n36.91\n");
+            //cbcTaxAmount3.setTextContent("\n36.91\n");
+            cbcTaxAmount3.setTextContent(fileXML.getCbcTaxableAmount());
             
             Attr currencyID4 = doc.createAttribute("currencyID");
             currencyID4.setValue("COP");
@@ -874,13 +917,15 @@ public class CreateXML {
             
             Element cbcTaxEvidenceIndicator2 = doc.createElement("cbc:TaxEvidenceIndicator");
             feTaxTotal2.appendChild(cbcTaxEvidenceIndicator2);
-            cbcTaxEvidenceIndicator2.setTextContent("\nfalse\n");
+            //cbcTaxEvidenceIndicator2.setTextContent("\nfalse\n");
+            cbcTaxEvidenceIndicator2.setTextContent(fileXML.getCbcTaxEvidenceIndicator());
             
             Element feTaxSubtotal2 = doc.createElement("fe:TaxSubtotal");
             feTaxTotal2.appendChild(feTaxSubtotal2);
 
             Element cbcTaxableAmount2 = doc.createElement("cbc:TaxableAmount");
             feTaxSubtotal2.appendChild(cbcTaxableAmount2);
+            //cbcTaxableAmount2.setTextContent("1845839.84\n");
             cbcTaxableAmount2.setTextContent("1845839.84\n");
             
             Attr currencyID5 = doc.createAttribute("currencyID");
@@ -889,7 +934,8 @@ public class CreateXML {
             
             Element cbcTaxAmount4 = doc.createElement("cbc:TaxAmount");
             feTaxSubtotal2.appendChild(cbcTaxAmount4);
-            cbcTaxAmount4.setTextContent("36.91\n");
+            //cbcTaxAmount4.setTextContent("36.91\n");
+            cbcTaxableAmount2.setTextContent(fileXML.getCbcTaxableAmount());
             
             Attr currencyID6 = doc.createAttribute("currencyID");
             currencyID6.setValue("COP");
@@ -897,7 +943,8 @@ public class CreateXML {
             
             Element cbcPercent2 = doc.createElement("cbc:Percent");
             feTaxSubtotal2.appendChild(cbcPercent2);
-            cbcPercent2.setTextContent("\n0.0020\n");
+            //cbcPercent2.setTextContent("\n0.0020\n");
+            cbcPercent2.setTextContent(fileXML.getCbcPercent());
             
             Element cacTaxCategory2 = doc.createElement("cac:TaxCategory");
             feTaxSubtotal2.appendChild(cacTaxCategory2);
@@ -907,8 +954,8 @@ public class CreateXML {
             
             Element cbcID5 = doc.createElement("cbc:ID");
             cacTaxScheme4.appendChild(cbcID5);
-            cbcID5.setTextContent("08\n");
-            
+            //cbcID5.setTextContent("08\n");
+            cbcID5.setTextContent("08\n");            
             
             //2******************
             
